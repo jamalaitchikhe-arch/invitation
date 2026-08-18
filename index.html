@@ -4,1528 +4,931 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#102b25">
-<meta name="description" content="دعوة زفاف كريم ومروة">
-<title>كريم & مروة | دعوة زفاف</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<title>دورة الروبوتيك للأطفال 2025/2026</title>
 
 <style>
-
+/* =========================
+   الهوية البصرية
+========================= */
 :root{
---green:#102b25;
---green2:#183d33;
---gold:#c7a45d;
---gold2:#e5cc91;
---gold3:#f1dfae;
---cream:#f8f3e9;
---ivory:#fffdf8;
---ink:#263630;
+    --primary:#087ea4;
+    --secondary:#00b8d9;
+    --accent:#ffb703;
+    --dark:#071a2b;
+    --dark2:#0d2940;
+    --light:#f4fbff;
+    --white:#ffffff;
+    --text:#173042;
 }
 
-*{box-sizing:border-box}
-
-html{
-scroll-behavior:smooth;
+/* =========================
+   الإعدادات العامة
+========================= */
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-margin:0;
-color:var(--ink);
-background:var(--cream);
-font-family:"Cairo",sans-serif;
-overflow-x:hidden;
+    font-family:"Tahoma","Arial",sans-serif;
+    background:var(--light);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-body.locked{
-overflow:hidden;
-}
-
-section{
-position:relative;
-}
-
-.container{
-width:min(1080px,92%);
-margin:auto;
-}
-
-/* الزخارف */
-
-.ornament{
-width:150px;
-height:1px;
-background:linear-gradient(
-90deg,
-transparent,
-var(--gold),
-transparent
-);
-margin:20px auto 30px;
-position:relative;
-}
-
-.ornament:before,
-.ornament:after{
-content:"✦";
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-color:var(--gold);
-font-size:13px;
-background:var(--cream);
-padding:0 8px;
-}
-
-.ornament:before{
-right:50%;
-}
-
-.ornament:after{
-left:50%;
-}
-
-/* شاشة البداية */
-
-#opening{
-position:fixed;
-inset:0;
-z-index:1000;
-
-background:
-radial-gradient(
-circle at center,
-rgba(55,91,78,.45),
-transparent 45%
-),
-linear-gradient(
-135deg,
-#071c17,
-#102b25 50%,
-#081a16
-);
-
-color:#fff;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-text-align:center;
-
-transition:
-opacity 1s ease,
-visibility 1s ease;
-}
-
-#opening:before,
-#opening:after{
-content:"";
-position:absolute;
-width:420px;
-height:420px;
-border:1px solid rgba(229,204,145,.18);
-border-radius:50%;
-}
-
-#opening:before{
-right:-250px;
-top:-180px;
-}
-
-#opening:after{
-left:-250px;
-bottom:-180px;
-}
-
-#opening.hide{
-opacity:0;
-visibility:hidden;
-pointer-events:none;
-}
-
-.opening-inner{
-position:relative;
-z-index:2;
-padding:35px 20px;
-max-width:650px;
-}
-
-.opening-inner:before{
-content:"";
-position:absolute;
-inset:0;
-border:1px solid rgba(229,204,145,.25);
-transform:scale(.95);
-pointer-events:none;
-}
-
-.opening-bismillah{
-font-family:"Amiri";
-font-size:25px;
-color:var(--gold3);
-margin-bottom:25px;
-}
-
-.opening-small{
-font-size:10px;
-letter-spacing:5px;
-color:#d9d2c1;
-}
-
-.opening-title{
-font-family:"Amiri";
-font-size:clamp(55px,13vw,105px);
-line-height:1;
-margin:20px 0 25px;
-color:#fff;
-}
-
-.opening-sub{
-font-family:"Amiri";
-color:#d9c58f;
-font-size:20px;
-margin-bottom:30px;
-}
-
-.open-btn{
-border:1px solid var(--gold2);
-background:rgba(199,164,93,.08);
-color:#fff;
-padding:15px 42px;
-border-radius:50px;
-font-family:"Cairo";
-font-size:14px;
-cursor:pointer;
-transition:.4s;
-}
-
-.open-btn:hover{
-background:var(--gold);
-color:var(--green);
-transform:translateY(-3px);
-}
-
-/* زر الموسيقى */
-
-.music-control{
-position:fixed;
-z-index:900;
-left:20px;
-bottom:20px;
-width:48px;
-height:48px;
-border-radius:50%;
-border:1px solid rgba(229,204,145,.65);
-background:rgba(16,43,37,.9);
-color:var(--gold2);
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-opacity:0;
-pointer-events:none;
-transition:.4s;
-}
-
-.music-control.active{
-opacity:1;
-pointer-events:auto;
-}
-
-.music-control.playing{
-animation:musicPulse 2s infinite;
-}
-
-@keyframes musicPulse{
-0%,100%{
-box-shadow:0 0 0 0 rgba(229,204,145,.2);
-}
-50%{
-box-shadow:0 0 0 10px rgba(229,204,145,0);
-}
-}
-
-/* Hero */
-
+/* =========================
+   صفحة الاستقبال
+========================= */
 .hero{
-min-height:100svh;
-display:flex;
-align-items:center;
-text-align:center;
-color:#fff;
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px 20px;
+    overflow:hidden;
 
-background:
-radial-gradient(
-circle at 50% 30%,
-rgba(72,108,93,.65),
-transparent 40%
-),
-linear-gradient(
-180deg,
-#1d473b,
-#102b25 70%,
-#091d18
-);
-
-overflow:hidden;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,184,217,.25), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255,183,3,.18), transparent 30%),
+        linear-gradient(135deg,var(--dark),#0b3550);
 }
 
-.hero:before{
-content:"";
-position:absolute;
-inset:28px;
-border:1px solid rgba(229,204,145,.2);
-pointer-events:none;
+/* شبكة تقنية */
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:40px 40px;
 }
 
-.hero:after{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-border:1px solid rgba(229,204,145,.12);
-border-radius:50%;
-right:-300px;
-bottom:-300px;
+/* دوائر ديكورية */
+.circle{
+    position:absolute;
+    border:1px solid rgba(0,184,217,.25);
+    border-radius:50%;
+    animation:float 8s infinite ease-in-out;
+}
+
+.circle.one{
+    width:350px;
+    height:350px;
+    top:-100px;
+    right:-100px;
+}
+
+.circle.two{
+    width:250px;
+    height:250px;
+    bottom:-80px;
+    left:-80px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-20px)}
 }
 
 .hero-content{
-width:100%;
-position:relative;
-z-index:2;
+    position:relative;
+    z-index:2;
+    max-width:850px;
+    animation:fadeUp 1.2s ease;
 }
 
-.save{
-font-size:11px;
-letter-spacing:6px;
-color:var(--gold2);
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
+/* =========================
+   الشعار
+========================= */
+.logo{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    margin-bottom:25px;
+
+    /* استبدل الصورة لاحقًا */
+    background:rgba(255,255,255,.08);
+    border:2px solid rgba(255,255,255,.25);
+    border-radius:28px;
+    padding:12px;
+}
+
+.logo-placeholder{
+    color:white;
+    font-size:13px;
+    opacity:.7;
+}
+
+/* =========================
+   العناوين
+========================= */
 .hero h1{
-font-family:"Amiri";
-font-size:clamp(65px,14vw,135px);
-font-weight:400;
-line-height:1;
-margin:25px 0 8px;
-color:#fff;
+    color:white;
+    font-size:clamp(30px,6vw,62px);
+    line-height:1.3;
+    margin-bottom:15px;
+    font-weight:800;
 }
 
 .hero h1 span{
-color:var(--gold2);
-font-family:"Playfair Display";
-font-size:.55em;
-margin:0 10px;
+    color:var(--accent);
 }
 
-.hero-date{
-font-size:16px;
-letter-spacing:2px;
-color:#e9e2d3;
+.french-title{
+    color:#ccecf5;
+    font-size:clamp(17px,3vw,25px);
+    margin-bottom:25px;
+    direction:ltr;
 }
 
-.hero-sub{
-font-family:"Amiri";
-font-size:26px;
-color:var(--gold3);
-margin-top:22px;
+.subtitle{
+    color:#d8edf4;
+    max-width:650px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.9;
 }
 
-.scroll{
-margin-top:65px;
-font-size:10px;
-opacity:.7;
-letter-spacing:3px;
-}
-
-/* الأقسام */
-
-.light{
-background:radial-gradient(
-circle at top,
-#fffdf8,
-var(--cream)
-);
-padding:100px 0;
-}
-
-.section-title{
-text-align:center;
-}
-
-.section-title .eyebrow{
-font-size:10px;
-letter-spacing:5px;
-color:#8d7040;
-}
-
-.section-title h2{
-font-family:"Amiri";
-font-size:44px;
-font-weight:700;
-margin:7px 0;
-color:var(--green);
-}
-
-.section-title p{
-max-width:620px;
-margin:0 auto;
-line-height:2;
-color:#68746f;
-}
-
-/* العد التنازلي */
-
-.countdown{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-max-width:720px;
-margin:45px auto 0;
-}
-
-.timebox{
-background:linear-gradient(
-145deg,
-#fff,
-#f8f1e3
-);
-
-border:1px solid #dfcfaa;
-padding:25px 8px;
-box-shadow:0 15px 40px rgba(16,43,37,.08);
-position:relative;
-text-align:center;
-}
-
-.timebox:before{
-content:"";
-position:absolute;
-inset:5px;
-border:1px solid rgba(199,164,93,.18);
-pointer-events:none;
-}
-
-.timebox strong{
-display:block;
-font-family:"Playfair Display";
-font-size:38px;
-color:var(--green);
-}
-
-.timebox span{
-font-size:11px;
-color:#8b8170;
-}
-
-/* الدعوة */
-
-.invite{
-background:
-radial-gradient(
-circle at 50% 20%,
-#234e42,
-transparent 45%
-),
-var(--green);
-
-color:#fff;
-padding:105px 0;
-text-align:center;
-}
-
-.invite:before{
-content:"";
-position:absolute;
-inset:25px;
-border:1px solid rgba(229,204,145,.18);
-pointer-events:none;
-}
-
-.invite .section-title h2{
-color:#fff;
-}
-
-.invite .section-title .eyebrow{
-color:var(--gold2);
-}
-
-.invite .section-title p{
-color:#dce8e1;
-}
-
-.invite .ornament:before,
-.invite .ornament:after{
-background:var(--green);
-}
-
-.message{
-max-width:780px;
-margin:45px auto 0;
-font-family:"Amiri";
-font-size:27px;
-line-height:2.2;
-color:#f7edda;
-}
-
-.names-card{
-margin:55px auto 0;
-max-width:850px;
-padding:45px 20px;
-border:1px solid rgba(229,204,145,.5);
-position:relative;
-background:linear-gradient(
-135deg,
-rgba(255,255,255,.04),
-transparent
-);
-}
-
-.names-card:before,
-.names-card:after{
-content:"✦";
-position:absolute;
-color:var(--gold2);
-font-size:22px;
-}
+/* =========================
+   زر الدخول
+========================= */
+.start-btn{
+    margin-top:35px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
-.names-card:before{
-right:20px;
-top:12px;
-}
-
-.names-card:after{
-left:20px;
-bottom:12px;
-}
-
-.names-card .names{
-font-family:"Amiri";
-font-size:58px;
-color:var(--gold2);
-margin-bottom:12px;
-}
-
-.names-card .and{
-font-family:"Playfair Display";
-font-size:23px;
-margin:0 15px;
-}
-
-/* التفاصيل */
-
-.details{
-padding:100px 0;
-background:#fffdf8;
-}
-
-.detail-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:22px;
-margin-top:50px;
-}
-
-.detail{
-text-align:center;
-padding:35px 20px;
-border:1px solid #e4d7bb;
-background:linear-gradient(
-145deg,
-#fffdf8,
-#f8f1e4
-);
-box-shadow:0 15px 40px rgba(35,53,45,.05);
-position:relative;
-}
-
-.detail:before{
-content:"";
-position:absolute;
-inset:7px;
-border:1px solid rgba(199,164,93,.15);
-}
-
-.icon{
-font-size:30px;
-color:var(--gold);
-}
-
-.detail h3{
-font-family:"Amiri";
-font-size:26px;
-color:var(--green);
-margin:10px 0;
-}
-
-.detail p{
-margin:0;
-line-height:2;
-color:#68736e;
-}
+    padding:17px 38px;
+    border:none;
+    border-radius:50px;
 
-.map-btn{
-display:inline-block;
-margin-top:40px;
-padding:14px 32px;
-border-radius:40px;
-background:var(--green);
-color:#fff;
-text-decoration:none;
-font-size:13px;
-transition:.3s;
-border:1px solid var(--gold);
-}
-
-.map-btn:hover{
-background:var(--gold);
-color:var(--green);
-transform:translateY(-2px);
-}
+    background:linear-gradient(135deg,var(--accent),#ffca3a);
+    color:#15283a;
 
-/* البرنامج */
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
 
-.timeline{
-padding:100px 0;
-background:radial-gradient(
-circle at center,
-#fffdf8,
-#f5efe3
-);
+    box-shadow:0 12px 35px rgba(255,183,3,.25);
+    transition:.3s;
 }
 
-.timeline-list{
-max-width:680px;
-margin:50px auto 0;
-border-right:1px solid var(--gold);
-padding-right:30px;
+.start-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 18px 45px rgba(255,183,3,.4);
 }
 
-.event{
-position:relative;
-padding:5px 0 35px;
+/* =========================
+   صفحة الدورة
+========================= */
+#coursePage{
+    display:none;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top right,rgba(0,184,217,.08),transparent 30%),
+        var(--light);
 }
 
-.event:before{
-content:"";
-position:absolute;
-right:-37px;
-top:8px;
-width:11px;
-height:11px;
-border-radius:50%;
-background:var(--gold);
-border:4px solid var(--cream);
-box-shadow:0 0 0 1px var(--gold);
+/* رأس الدورة */
+.course-header{
+    background:linear-gradient(135deg,var(--dark),var(--dark2));
+    color:white;
+    padding:35px 20px;
+    text-align:center;
 }
 
-.event time{
-color:#9a7a43;
-font-size:13px;
+.course-header h2{
+    font-size:clamp(25px,4vw,40px);
+    margin-bottom:8px;
 }
 
-.event h3{
-margin:5px 0;
-font-family:"Amiri";
-font-size:26px;
-color:var(--green);
+.course-header p{
+    color:#bfe8f2;
 }
 
-.event p{
-margin:0;
-color:#68736e;
+/* =========================
+   شريط التقدم
+========================= */
+.progress-area{
+    max-width:1100px;
+    margin:25px auto;
+    padding:0 20px;
 }
 
-/* الصور */
-
-.gallery{
-background:#fffdf8;
-padding:100px 0;
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    font-size:14px;
+    color:#527080;
 }
 
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-margin-top:45px;
+.progress{
+    height:9px;
+    background:#dbeaf0;
+    border-radius:20px;
+    overflow:hidden;
 }
-
-.photo{
-min-height:270px;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:#fff;
-position:relative;
 
-background:
-linear-gradient(
-135deg,
-#657c70,
-#173b31 55%,
-#aa8b52
-);
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,var(--secondary),var(--accent));
+    transition:.5s;
 }
 
-.photo:nth-child(2){
-background:linear-gradient(
-135deg,
-#c9b68d,
-#526b5c
-);
-}
+/* =========================
+   شبكة الدروس
+========================= */
+.lessons{
+    max-width:1100px;
+    margin:30px auto;
+    padding:0 20px;
 
-.photo:nth-child(3){
-background:linear-gradient(
-135deg,
-#234a3f,
-#987644
-);
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
 }
 
-.photo:nth-child(4){
-background:linear-gradient(
-135deg,
-#9a8260,
-#36584d
-);
-}
+.lesson{
+    background:white;
+    border-radius:20px;
+    padding:20px;
 
-.photo:nth-child(5){
-background:linear-gradient(
-135deg,
-#47695c,
-#b59a63
-);
-}
+    border:1px solid #e2eef3;
 
-.photo:nth-child(6){
-background:linear-gradient(
-135deg,
-#d0c09c,
-#315248
-);
-}
+    box-shadow:0 8px 25px rgba(20,70,90,.07);
 
-.photo span{
-font-family:"Amiri";
-font-size:25px;
-position:relative;
-z-index:2;
-text-shadow:0 3px 15px rgba(0,0,0,.35);
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
 }
 
-.photo:after{
-content:"";
-position:absolute;
-inset:12px;
-border:1px solid rgba(255,255,255,.45);
+.lesson::before{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    width:5px;
+    height:100%;
+    background:var(--secondary);
 }
-
-/* تأكيد الحضور */
-
-.rsvp{
-padding:105px 0;
 
-background:
-radial-gradient(
-circle at center,
-#234e42,
-#102b25 70%
-);
-
-color:#fff;
-text-align:center;
+.lesson:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(20,70,90,.13);
 }
 
-.rsvp:before{
-content:"";
-position:absolute;
-inset:25px;
-border:1px solid rgba(229,204,145,.18);
-}
+.lesson-number{
+    display:inline-flex;
+    width:42px;
+    height:42px;
+    align-items:center;
+    justify-content:center;
 
-.rsvp h2{
-font-family:"Amiri";
-font-size:44px;
-margin:0;
-color:var(--gold2);
+    border-radius:12px;
+    background:#e6f8fc;
+    color:var(--primary);
+    font-weight:bold;
+    margin-bottom:13px;
 }
 
-.rsvp p{
-color:#dce8e1;
+.lesson h3{
+    font-size:18px;
+    margin-bottom:8px;
 }
 
-.rsvp .ornament:before,
-.rsvp .ornament:after{
-background:#183d33;
+.lesson p{
+    font-size:13px;
+    color:#78909c;
+    line-height:1.6;
 }
 
-.rsvp-buttons{
-display:flex;
-justify-content:center;
-gap:14px;
-flex-wrap:wrap;
-margin-top:35px;
+.open-lesson{
+    display:block;
+    margin-top:15px;
+    color:var(--primary);
+    font-size:14px;
+    font-weight:bold;
 }
 
-.rsvp a{
-text-decoration:none;
-border:1px solid var(--gold);
-color:#fff;
-padding:14px 28px;
-border-radius:40px;
-transition:.3s;
-font-size:13px;
+/* =========================
+   منطقة عرض الدرس
+========================= */
+.viewer{
+    max-width:1100px;
+    margin:35px auto;
+    padding:0 20px;
+    display:none;
 }
 
-.rsvp a.primary{
-background:var(--gold);
-color:var(--green);
+.viewer-box{
+    background:#071a2b;
+    border-radius:25px;
+    padding:15px;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
 }
 
-.rsvp a:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(0,0,0,.2);
+.viewer-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    padding:12px 8px 18px;
+    color:white;
 }
-
-/* النهاية */
 
-.footer{
-background:#081c17;
-color:#b9c8c1;
-text-align:center;
-padding:55px 20px;
+.viewer-title{
+    font-size:20px;
+    font-weight:bold;
 }
 
-.footer strong{
-display:block;
-font-family:"Amiri";
-font-size:32px;
-color:var(--gold2);
-margin-bottom:5px;
+.close-btn{
+    background:rgba(255,255,255,.1);
+    color:white;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:30px;
+    padding:8px 15px;
+    cursor:pointer;
 }
 
-.footer small{
-opacity:.7;
+.video-container{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+    border-radius:15px;
+    overflow:hidden;
 }
 
-/* الحركة */
-
-.reveal{
-opacity:0;
-transform:translateY(30px);
-transition:
-opacity .9s ease,
-transform .9s ease;
+.video-container iframe{
+    width:100%;
+    height:100%;
+    border:none;
 }
 
-.reveal.visible{
-opacity:1;
-transform:none;
+/* =========================
+   المرفقات
+========================= */
+.attachments{
+    max-width:1100px;
+    margin:20px auto 50px;
+    padding:0 20px;
 }
 
-/* الهاتف */
+.attachments-box{
+    background:white;
+    border-radius:22px;
+    padding:25px;
 
-@media(max-width:700px){
-
-.hero:before{
-inset:15px;
+    border:1px solid #e2eef3;
+    box-shadow:0 8px 25px rgba(20,70,90,.06);
 }
 
-.hero h1{
-font-size:70px;
+.attachments h2{
+    margin-bottom:18px;
+    color:var(--dark);
 }
 
-.hero-sub{
-font-size:22px;
+.attachment-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:12px;
 }
 
-.hero-date{
-font-size:13px;
+.attachment{
+    text-decoration:none;
+    background:#f2f9fc;
+    color:var(--primary);
+    padding:14px;
+    border-radius:13px;
+    font-weight:bold;
+    transition:.3s;
 }
 
-.countdown{
-grid-template-columns:repeat(2,1fr);
+.attachment:hover{
+    background:#e1f5fa;
+    transform:translateY(-2px);
 }
 
-.detail-grid{
-grid-template-columns:1fr;
+/* =========================
+   زر العودة
+========================= */
+.back-btn{
+    display:block;
+    margin:10px auto 35px;
+    border:none;
+    background:var(--dark);
+    color:white;
+    padding:12px 25px;
+    border-radius:30px;
+    cursor:pointer;
 }
 
-.gallery-grid{
-grid-template-columns:repeat(2,1fr);
-}
+/* =========================
+   الهاتف
+========================= */
+@media(max-width:600px){
 
-.photo{
-min-height:190px;
-}
+    .hero{
+        min-height:100svh;
+    }
 
-.names-card .names{
-font-size:44px;
-}
+    .logo{
+        width:95px;
+        height:95px;
+    }
 
-.message{
-font-size:22px;
-}
+    .subtitle{
+        font-size:15px;
+    }
 
-.section-title h2{
-font-size:38px;
-}
+    .start-btn{
+        width:90%;
+        justify-content:center;
+    }
 
-.rsvp h2{
-font-size:38px;
-}
+    .lessons{
+        grid-template-columns:1fr;
+    }
 
+    .viewer-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 }
-
 </style>
 </head>
 
-<body class="locked">
+<body>
 
-<!-- الموسيقى -->
-<audio id="weddingMusic" loop preload="auto">
-<source src="wedding-music.mp3" type="audio/mpeg">
-</audio>
+<!-- ======================================================
+     الصفحة الأولى
+====================================================== -->
 
-<!-- زر الموسيقى -->
-<button
-id="musicControl"
-class="music-control"
-onclick="toggleMusic()"
-aria-label="تشغيل أو إيقاف الموسيقى">
-♪
-</button>
+<section class="hero" id="homePage">
 
+    <div class="circle one"></div>
+    <div class="circle two"></div>
 
-<!-- شاشة البداية -->
+    <div class="hero-content">
 
-<div id="opening">
+        <!--
+        ==================================================
+        أضف شعار المنصة هنا
+        مثال:
+        <img src="logo.png" class="logo">
+        ==================================================
+        -->
 
-<div class="opening-inner">
+        <div class="logo logo-placeholder">
+            شعار المنصة
+        </div>
 
-<div class="opening-bismillah">
-بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
-</div>
+        <h1>
+            دورة الروبوتيك
+            <span>للأطفال</span>
+            2025/2026
+        </h1>
 
-<div class="opening-small">
-دعوة زفاف خاصة
-</div>
+        <div class="french-title">
+            Formation en Robotique pour Enfants 2025/2026
+        </div>
 
-<div class="opening-title">
-كريم & مروة
-</div>
+        <p class="subtitle">
+            رحلة ممتعة لاكتشاف عالم الروبوتات،
+            البرمجة، الإلكترونيات والابتكار
+            بطريقة تفاعلية وممتعة.
+        </p>
 
-<div class="opening-sub">
-بكل الحب ندعوكم لمشاركتنا فرحتنا
-</div>
+        <button class="start-btn" onclick="openCourse()">
+            🚀 ابدأ رحلة الروبوتيك
+        </button>
 
-<button
-class="open-btn"
-onclick="openInvitation()">
-فتح الدعوة ✦
-</button>
-
-</div>
-
-</div>
-
-
-<!-- Hero -->
-
-<section class="hero">
-
-<div class="container hero-content">
-
-<div class="save">
-SAVE THE DATE
-</div>
-
-<h1>
-كريم
-<span>&amp;</span>
-مروة
-</h1>
-
-<div class="hero-sub">
-وبالحب تبدأ أجمل الحكايات
-</div>
-
-<div class="hero-date">
-السبت · 12 سبتمبر 2026 · الساعة 18:00
-</div>
-
-<div class="scroll">
-مرّر لاكتشاف التفاصيل ↓
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- العد التنازلي -->
+<!-- ======================================================
+     صفحة الدورة
+====================================================== -->
 
-<section class="light reveal">
+<section id="coursePage">
 
-<div class="container">
+    <header class="course-header">
 
-<div class="section-title">
+        <h2>🤖 دورة الروبوتيك للأطفال</h2>
 
-<div class="eyebrow">
-THE COUNTDOWN
-</div>
+        <p>
+            2025/2026 — تعلم، اكتشف، اصنع وابتكر
+        </p>
 
-<h2>
-موعدنا يقترب
-</h2>
+    </header>
 
-<div class="ornament"></div>
 
-<p>
-ننتظر هذه اللحظة بكل حب،
-ويسعدنا أن نشارككم فرحتنا.
-</p>
+    <!-- شريط التقدم -->
 
-</div>
+    <div class="progress-area">
 
-<div class="countdown">
+        <div class="progress-info">
+            <span>تقدمك في الدورة</span>
+            <span id="progressText">0 / 20</span>
+        </div>
 
-<div class="timebox">
-<strong id="days">00</strong>
-<span>يوم</span>
-</div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
 
-<div class="timebox">
-<strong id="hours">00</strong>
-<span>ساعة</span>
-</div>
+    </div>
 
-<div class="timebox">
-<strong id="minutes">00</strong>
-<span>دقيقة</span>
-</div>
 
-<div class="timebox">
-<strong id="seconds">00</strong>
-<span>ثانية</span>
-</div>
+    <!-- ==================================================
+         عارض الدرس
+    ================================================== -->
 
-</div>
+    <div class="viewer" id="viewer">
 
-</div>
+        <div class="viewer-box">
+
+            <div class="viewer-header">
+
+                <div class="viewer-title" id="viewerTitle">
+                    عنوان الدرس
+                </div>
+
+                <button class="close-btn" onclick="closeLesson()">
+                    ✕ إغلاق الدرس
+                </button>
+
+            </div>
+
+            <div class="video-container">
+
+                <iframe
+                    id="lessonFrame"
+                    src=""
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         الدروس
+    ================================================== -->
+
+    <div class="lessons" id="lessonsContainer"></div>
+
+
+    <!-- ==================================================
+         المرفقات
+    ================================================== -->
+
+    <div class="attachments">
+
+        <div class="attachments-box">
+
+            <h2>📚 المرفقات والموارد</h2>
+
+            <div class="attachment-list">
+
+                <!--
+                أضف روابط المرفقات هنا
+
+                مثال:
+
+                <a class="attachment"
+                   href="رابط-الملف"
+                   target="_blank">
+                   📄 دليل الدورة
+                </a>
+                -->
+
+                <a class="attachment" href="#" onclick="return false;">
+                    📄 المرفق الأول
+                </a>
+
+                <a class="attachment" href="#" onclick="return false;">
+                    📝 التمارين
+                </a>
+
+                <a class="attachment" href="#" onclick="return false;">
+                    📦 ملفات المشاريع
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button class="back-btn" onclick="goHome()">
+        ← العودة إلى الصفحة الرئيسية
+    </button>
 
 </section>
-
-
-<!-- نص الدعوة -->
-
-<section class="invite reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<div class="eyebrow">
-WITH LOVE
-</div>
-
-<h2>
-بكل حب ندعوكم
-</h2>
-
-<div class="ornament"></div>
-
-</div>
-
-<div class="message">
-
-الحمد لله الذي بنعمته تتم الصالحات،
-<br>
-يسرّنا أن ندعوكم لمشاركتنا فرحة زفافنا،
-<br>
-فوجودكم بيننا هو أجمل هدية.
-
-</div>
-
-<div class="names-card">
-
-<div class="names">
-كريم
-<span class="and">&amp;</span>
-مروة
-</div>
-
-<div>
-يسعدنا حضوركم ومشاركتكم هذه اللحظة الاستثنائية
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- التفاصيل -->
-
-<section class="details reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<div class="eyebrow">
-THE DETAILS
-</div>
-
-<h2>
-تفاصيل المناسبة
-</h2>
-
-<div class="ornament"></div>
-
-</div>
-
-<div class="detail-grid">
-
-<div class="detail">
-
-<div class="icon">
-◈
-</div>
-
-<h3>
-التاريخ
-</h3>
-
-<p>
-السبت 12 سبتمبر 2026
-<br>
-24 ربيع الأول 1448
-</p>
-
-</div>
-
-
-<div class="detail">
-
-<div class="icon">
-◷
-</div>
-
-<h3>
-الوقت
-</h3>
-
-<p>
-استقبال الضيوف: 18:00
-<br>
-بداية الحفل: 19:00
-</p>
-
-</div>
-
-
-<div class="detail">
-
-<div class="icon">
-⌖
-</div>
-
-<h3>
-المكان
-</h3>
-
-<p>
-قاعة الأندلس
-<br>
-مراكش، المغرب
-</p>
-
-</div>
-
-</div>
-
-<div style="text-align:center">
-
-<a
-class="map-btn"
-target="_blank"
-href="https://www.google.com/maps/search/?api=1&query=Palais+Namaskar+Marrakech">
-
-فتح الموقع على الخريطة
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- البرنامج -->
-
-<section class="timeline reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<div class="eyebrow">
-PROGRAM
-</div>
-
-<h2>
-برنامج الأمسية
-</h2>
-
-<div class="ornament"></div>
-
-</div>
-
-<div class="timeline-list">
-
-<div class="event">
-
-<time>18:00</time>
-
-<h3>
-استقبال الضيوف
-</h3>
-
-<p>
-نستقبلكم بكل محبة في رحاب القاعة.
-</p>
-
-</div>
-
-
-<div class="event">
-
-<time>19:00</time>
-
-<h3>
-بداية الحفل
-</h3>
-
-<p>
-لحظة اللقاء والاحتفال مع العائلة والأصدقاء.
-</p>
-
-</div>
-
-
-<div class="event">
-
-<time>21:00</time>
-
-<h3>
-العشاء
-</h3>
-
-<p>
-مائدة تجمعنا على المحبة والفرح.
-</p>
-
-</div>
-
-
-<div class="event">
-
-<time>22:00</time>
-
-<h3>
-لحظات الفرح
-</h3>
-
-<p>
-موسيقى واحتفال وذكريات لا تنسى.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- معرض الصور -->
-
-<section class="gallery reveal">
-
-<div class="container">
-
-<div class="section-title">
-
-<div class="eyebrow">
-OUR MOMENTS
-</div>
-
-<h2>
-من أجمل ذكرياتنا
-</h2>
-
-<div class="ornament"></div>
-
-<p>
-لحظات جميلة نشاركها معكم بكل حب.
-</p>
-
-</div>
-
-<div class="gallery-grid">
-
-<div class="photo">
-<span>صورتنا الأولى</span>
-</div>
-
-<div class="photo">
-<span>لحظة جميلة</span>
-</div>
-
-<div class="photo">
-<span>ذكرى لا تنسى</span>
-</div>
-
-<div class="photo">
-<span>معًا دائمًا</span>
-</div>
-
-<div class="photo">
-<span>أجمل الأيام</span>
-</div>
-
-<div class="photo">
-<span>بداية الحكاية</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- تأكيد الحضور -->
-
-<section class="rsvp reveal">
-
-<div class="container">
-
-<h2>
-يسعدنا تأكيد حضوركم
-</h2>
-
-<div class="ornament"></div>
-
-<p>
-اضغط على الزر المناسب وأخبرنا بحضورك.
-</p>
-
-<div class="rsvp-buttons">
-
-<a
-class="primary"
-target="_blank"
-href="https://wa.me/212754702767?text=السلام%20عليكم،%20أؤكد%20حضوري%20لحفل%20زفاف%20كريم%20ومروة%20وشكرًا%20لكم.">
-
-تأكيد الحضور عبر WhatsApp
-
-</a>
-
-
-<a
-target="_blank"
-href="https://wa.me/?text=يسعدني%20مشاركتكم%20دعوة%20زفاف%20كريم%20ومروة.">
-
-مشاركة الدعوة
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- Footer -->
-
-<footer class="footer">
-
-<strong>
-كريم & مروة
-</strong>
-
-<small>
-بالحب بدأت الحكاية… وبكم تكتمل الفرحة ♡
-</small>
-
-</footer>
 
 
 <script>
 
-/* =========================
-   العد التنازلي
-========================= */
+/* ========================================================
+   إعداد الدروس
+   ========================================================
 
-const weddingDate =
-new Date("2026-09-12T18:00:00+01:00").getTime();
+   ضع عناوين الدروس وروابط Google Drive هنا.
 
-function updateCountdown(){
+   يمكنك تغيير:
 
-const now=Date.now();
+   title = عنوان الدرس
+   url   = رابط Google Drive
 
-let diff=weddingDate-now;
+   ======================================================== */
 
-if(diff<0){
-diff=0;
-}
+const lessons = [
 
-const days=
-Math.floor(diff/86400000);
+    {
+        title: "عنوان الدرس الأول",
+        url: "ضع-رابط-الدرس-الأول-هنا"
+    },
 
-const hours=
-Math.floor(
-(diff%86400000)/3600000
-);
+    {
+        title: "عنوان الدرس الثاني",
+        url: "ضع-رابط-الدرس-الثاني-هنا"
+    },
 
-const minutes=
-Math.floor(
-(diff%3600000)/60000
-);
+    {
+        title: "عنوان الدرس الثالث",
+        url: "ضع-رابط-الدرس-الثالث-هنا"
+    },
 
-const seconds=
-Math.floor(
-(diff%60000)/1000
-);
+    {
+        title: "عنوان الدرس الرابع",
+        url: "ضع-رابط-الدرس-الرابع-هنا"
+    },
 
-document.getElementById("days").textContent=
-String(days).padStart(2,"0");
+    {
+        title: "عنوان الدرس الخامس",
+        url: "ضع-رابط-الدرس-الخامس-هنا"
+    },
 
-document.getElementById("hours").textContent=
-String(hours).padStart(2,"0");
+    {
+        title: "عنوان الدرس السادس",
+        url: "ضع-رابط-الدرس-السادس-هنا"
+    },
 
-document.getElementById("minutes").textContent=
-String(minutes).padStart(2,"0");
+    {
+        title: "عنوان الدرس السابع",
+        url: "ضع-رابط-الدرس-السابع-هنا"
+    },
 
-document.getElementById("seconds").textContent=
-String(seconds).padStart(2,"0");
+    {
+        title: "عنوان الدرس الثامن",
+        url: "ضع-رابط-الدرس-الثامن-هنا"
+    },
 
-}
+    {
+        title: "عنوان الدرس التاسع",
+        url: "ضع-رابط-الدرس-التاسع-هنا"
+    },
 
-setInterval(updateCountdown,1000);
+    {
+        title: "عنوان الدرس العاشر",
+        url: "ضع-رابط-الدرس-العاشر-هنا"
+    },
 
-updateCountdown();
+    {
+        title: "عنوان الدرس الحادي عشر",
+        url: "ضع-رابط-الدرس-الحادي-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس الثاني عشر",
+        url: "ضع-رابط-الدرس-الثاني-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس الثالث عشر",
+        url: "ضع-رابط-الدرس-الثالث-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس الرابع عشر",
+        url: "ضع-رابط-الدرس-الرابع-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس الخامس عشر",
+        url: "ضع-رابط-الدرس-الخامس-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس السادس عشر",
+        url: "ضع-رابط-الدرس-السادس-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس السابع عشر",
+        url: "ضع-رابط-الدرس-السابع-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس الثامن عشر",
+        url: "ضع-رابط-الدرس-الثامن-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس التاسع عشر",
+        url: "ضع-رابط-الدرس-التاسع-عشر-هنا"
+    },
+
+    {
+        title: "عنوان الدرس العشرون",
+        url: "ضع-رابط-الدرس-العشرون-هنا"
+    }
+
+];
 
 
-/* =========================
-   الموسيقى
-========================= */
+/* ========================================================
+   إنشاء بطاقات الدروس تلقائيًا
+======================================================== */
 
-const music=
-document.getElementById("weddingMusic");
+const lessonsContainer =
+    document.getElementById("lessonsContainer");
 
-const musicControl=
-document.getElementById("musicControl");
+lessons.forEach((lesson,index)=>{
 
+    const card = document.createElement("div");
 
-function openInvitation(){
+    card.className = "lesson";
 
-document
-.getElementById("opening")
-.classList.add("hide");
+    card.innerHTML = `
 
-document
-.body
-.classList.remove("locked");
+        <div class="lesson-number">
+            ${String(index+1).padStart(2,"0")}
+        </div>
 
-/* تشغيل الموسيقى بعد ضغط المستخدم */
+        <h3>
+            ${lesson.title}
+        </h3>
 
-music.volume=0.45;
+        <p>
+            درس من دروس دورة الروبوتيك
+        </p>
 
-music.play()
-.then(()=>{
+        <span class="open-lesson">
+            ▶ افتح الدرس
+        </span>
 
-musicControl.classList.add("active");
+    `;
 
-musicControl.classList.add("playing");
+    card.onclick = ()=>openLesson(index);
 
-musicControl.innerHTML="♫";
-
-})
-.catch(()=>{
-
-musicControl.classList.add("active");
+    lessonsContainer.appendChild(card);
 
 });
 
-}
 
+/* ========================================================
+   فتح الدورة
+======================================================== */
 
-/* تشغيل / إيقاف الموسيقى */
+function openCourse(){
 
-function toggleMusic(){
+    document.getElementById("homePage").style.display="none";
 
-if(music.paused){
+    document.getElementById("coursePage").style.display="block";
 
-music.play();
-
-musicControl.classList.add("playing");
-
-musicControl.innerHTML="♫";
-
-}else{
-
-music.pause();
-
-musicControl.classList.remove("playing");
-
-musicControl.innerHTML="♪";
-
-}
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
-/* =========================
-   ظهور الأقسام
-========================= */
+/* ========================================================
+   فتح درس
+======================================================== */
 
-const observer=
-new IntersectionObserver(
-entries=>{
+function openLesson(index){
 
-entries.forEach(entry=>{
+    const lesson = lessons[index];
 
-if(entry.isIntersecting){
+    document.getElementById("viewer").style.display="block";
 
-entry.target.classList.add("visible");
+    document.getElementById("viewerTitle").textContent =
+        "الدرس " + (index+1) + " — " + lesson.title;
+
+    /*
+    وضع رابط Google Drive داخل iframe.
+
+    ملاحظة:
+    بعض روابط Drive العادية لا تسمح بالتضمين.
+    في هذه الحالة استخدم رابط المشاركة المناسب
+    أو رابط preview الخاص بالملف.
+    */
+
+    let url = lesson.url;
+
+    if(url.includes("drive.google.com")){
+
+        url = url.replace("/view?usp=sharing",
+                          "/preview");
+
+        url = url.replace("/view",
+                          "/preview");
+    }
+
+    document.getElementById("lessonFrame").src = url;
+
+    document.getElementById("viewer").scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+    updateProgress(index);
 
 }
 
-});
 
-},
-{
-threshold:.12
+/* ========================================================
+   إغلاق الدرس
+======================================================== */
+
+function closeLesson(){
+
+    document.getElementById("viewer").style.display="none";
+
+    document.getElementById("lessonFrame").src="";
+
 }
-);
 
-document
-.querySelectorAll(".reveal")
-.forEach(el=>observer.observe(el));
+
+/* ========================================================
+   التقدم
+======================================================== */
+
+function updateProgress(index){
+
+    const completed = index + 1;
+
+    const percentage =
+        (completed / lessons.length) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = percentage + "%";
+
+    document.getElementById("progressText")
+        .textContent =
+        completed + " / " + lessons.length;
+
+}
+
+
+/* ========================================================
+   العودة للرئيسية
+======================================================== */
+
+function goHome(){
+
+    document.getElementById("coursePage").style.display="none";
+
+    document.getElementById("homePage").style.display="flex";
+
+    closeLesson();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
 
 </script>
 

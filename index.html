@@ -1,1830 +1,555 @@
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>دورة الروبوتيك للأطفال 2025/2026 | SMARTEDUCAM</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101a17">
+<title>دعوة زفاف خولة وطارق</title>
 
 <style>
-
-/* =====================================================
-   SMARTEDUCAM VISUAL IDENTITY
-===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap');
 
 :root{
-    --blue:#087EA4;
-    --blue-dark:#063B5C;
-    --blue-light:#EAF8FC;
-
-    --orange:#F47C20;
-    --orange-light:#FFF1E6;
-
-    --gold:#F5B642;
-    --gold-light:#FFF8E5;
-
-    --dark:#071C2C;
-    --text:#183544;
-
-    --white:#FFFFFF;
-    --gray:#6B8491;
+--gold:#e2bd67;
+--cream:#fff4df;
+--ink:#3b080e;
+--muted:#e7cfc1;
+--red:#650d18;
+--red2:#8d1725
 }
 
-
-/* =====================================================
-   GENERAL
-===================================================== */
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    font-family:
-        "Tahoma",
-        "Arial",
-        sans-serif;
-
-    background:#F5FAFC;
-    color:var(--text);
-
-    overflow-x:hidden;
+margin:0;background:var(--ink);color:var(--cream);
+font-family:'Cairo',sans-serif;overflow-x:hidden
 }
 
+body:before{
+content:"";position:fixed;inset:0;pointer-events:none;
+z-index:2;opacity:.12;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")
+}
 
-/* =====================================================
-   HOME PAGE
-===================================================== */
+.hero{overflow:hidden}
+.hero:before{box-shadow:0 0 0 14px #e2bd6710,0 0 0 28px #e2bd6708}
+
+.frame{
+background:linear-gradient(135deg,#6b0d18aa,#3b080e55);
+box-shadow:inset 0 0 0 7px #e2bd6708,0 20px 80px #16020755
+}
+
+.frame:before,.frame:after{background:#560b15}
+.section-kicker{color:#a87925}
+
+.detail-card{
+background-image:repeating-conic-gradient(#cba85a15 0% 25%,transparent 0% 50%);
+background-size:22px 22px
+}
 
 .hero{
-
-    min-height:100vh;
-
-    position:relative;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:30px 20px;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(8,126,164,.25),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 85% 75%,
-            rgba(244,124,32,.20),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #052A43,
-            #087EA4
-        );
+min-height:100svh;display:grid;place-items:center;text-align:center;
+position:relative;padding:44px 20px;isolation:isolate;
+background:radial-gradient(ellipse at 50% 30%,#8d1725 0%,#560b15 48%,#27050a 100%)
 }
 
-
-/* TECH GRID */
-
-.hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background-image:
-
-        linear-gradient(
-            rgba(255,255,255,.04) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.04) 1px,
-            transparent 1px
-        );
-
-    background-size:40px 40px;
+.hero:before,.hero:after{
+content:"";position:absolute;width:min(78vw,600px);height:min(78vw,600px);
+border:1px solid #d9bb7950;border-radius:50%;z-index:-1;
+animation:rotate 70s linear infinite
 }
 
-
-/* DECORATIVE CIRCLES */
-
-.circle{
-
-    position:absolute;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    animation:
-        float 8s infinite ease-in-out;
+.hero:after{
+width:min(67vw,510px);height:min(67vw,510px);
+border-style:dashed;animation-direction:reverse;opacity:.55
 }
 
-.circle.one{
-
-    width:420px;
-    height:420px;
-
-    top:-180px;
-    right:-150px;
+.frame{
+width:min(100%,690px);padding:55px 22px 48px;
+border:1px solid #d9bb7980;position:relative;
+animation:rise 1.3s ease both
 }
 
-.circle.two{
-
-    width:300px;
-    height:300px;
-
-    bottom:-140px;
-    left:-100px;
-
-    animation-delay:2s;
+.frame:before,.frame:after{
+content:"✦";position:absolute;color:var(--gold);font-size:24px;
+background:#560b15;padding:0 10px;left:50%;
+transform:translateX(-50%)
 }
 
+.frame:before{top:-16px}
+.frame:after{bottom:-16px}
 
-@keyframes float{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-20px);
-    }
-
+.bismillah{
+font-family:'Amiri',serif;font-size:clamp(19px,4vw,25px);
+color:var(--gold);margin-bottom:24px
 }
 
-
-/* =====================================================
-   HERO CONTENT
-===================================================== */
-
-.hero-content{
-
-    position:relative;
-
-    z-index:2;
-
-    max-width:900px;
-
-    animation:
-        fadeUp 1.2s ease;
+.kicker{
+letter-spacing:4px;font-size:12px;color:var(--muted);margin:0 0 16px
 }
 
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(30px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateY(0);
-
-    }
-
+h1{
+font-family:'Amiri',serif;font-size:clamp(52px,12vw,90px);
+line-height:1.15;margin:0;color:var(--cream);font-weight:400;
+text-shadow:0 0 35px #d9bb7920
 }
 
-
-/* =====================================================
-   LOGO
-===================================================== */
-
-.logo{
-
-    width:145px;
-    height:145px;
-
-    object-fit:contain;
-
-    margin-bottom:25px;
-
-    padding:10px;
-
-    background:white;
-
-    border-radius:30px;
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.20);
+.amp{
+font-family:'Amiri',serif;color:var(--gold);font-size:45px;
+display:block;margin:-3px 0
 }
 
-
-/*
-ضع شعار SMARTEDUCAM هنا
-
-مثال:
-
-<img
-src="logo.png"
-class="logo"
-alt="SMARTEDUCAM">
-*/
-
-
-/* =====================================================
-   TITLES
-===================================================== */
-
-.hero h1{
-
-    color:white;
-
-    font-size:
-        clamp(
-            30px,
-            6vw,
-            60px
-        );
-
-    line-height:1.3;
-
-    font-weight:900;
-
-    margin-bottom:12px;
+.invite{
+max-width:470px;margin:25px auto 30px;
+line-height:2.1;color:#e5dccb;font-size:15px
 }
 
-
-.hero h1 span{
-
-    color:var(--gold);
+.date{
+display:inline-block;border-top:1px solid #d9bb7980;
+border-bottom:1px solid #d9bb7980;padding:12px 25px;
+color:var(--gold);letter-spacing:2px;font-size:16px
 }
 
-
-.french-title{
-
-    color:#DDF5FA;
-
-    font-size:
-        clamp(
-            17px,
-            3vw,
-            25px
-        );
-
-    direction:ltr;
-
-    margin-bottom:20px;
+.down{
+display:block;margin-top:35px;color:var(--gold);text-decoration:none;font-size:13px
 }
 
-
-.teacher{
-
-    color:#FFFFFF;
-
-    font-size:18px;
-
-    margin-top:12px;
-
-    opacity:.95;
+.music{
+position:fixed;z-index:10;top:16px;left:16px;
+border:1px solid #d9bb7977;background:#560b15ed;color:var(--cream);
+border-radius:40px;padding:10px 15px;font:inherit;font-size:12px;
+cursor:pointer;backdrop-filter:blur(8px)
 }
 
+.music span{color:var(--gold);margin-left:6px}
 
-.teacher strong{
+section{padding:88px 20px;text-align:center;position:relative}
 
-    color:var(--gold);
+.section-kicker{color:var(--gold);letter-spacing:3px;font-size:11px}
+
+h2{
+font-family:'Amiri',serif;font-weight:400;
+font-size:clamp(32px,7vw,49px);margin:10px 0 18px
 }
 
-
-.subtitle{
-
-    color:#D8EEF4;
-
-    max-width:700px;
-
-    margin:20px auto;
-
-    line-height:1.9;
-
-    font-size:17px;
+.lead{
+color:var(--muted);line-height:2;max-width:590px;margin:0 auto
 }
 
-
-/* =====================================================
-   START BUTTON
-===================================================== */
-
-.start-btn{
-
-    margin-top:25px;
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    padding:
-        17px 40px;
-
-    border:none;
-
-    border-radius:50px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--orange),
-            var(--gold)
-        );
-
-    color:white;
-
-    font-size:19px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 15px 35px
-        rgba(244,124,32,.30);
-
-    transition:.3s;
+.countdown{
+display:flex;justify-content:center;gap:12px;
+flex-wrap:wrap;margin:35px auto 22px
 }
 
-
-.start-btn:hover{
-
-    transform:
-        translateY(-4px)
-        scale(1.03);
-
-    box-shadow:
-        0 20px 45px
-        rgba(244,124,32,.45);
+.time{
+min-width:90px;padding:18px 12px;
+border:1px solid #d9bb7955;background:#ffffff05
 }
 
-
-/* =====================================================
-   COURSE PAGE
-===================================================== */
-
-#coursePage{
-
-    display:none;
-
-    min-height:100vh;
-
-    background:
-
-        radial-gradient(
-            circle at top right,
-            rgba(8,126,164,.08),
-            transparent 30%
-        ),
-
-        #F5FAFC;
+.time strong{
+display:block;font-family:'Amiri',serif;
+font-size:34px;color:var(--gold);font-weight:400
 }
 
+.time small{font-size:11px;color:var(--muted)}
 
-/* =====================================================
-   COURSE HEADER
-===================================================== */
+.details{background:#fff2dc;color:#3b080e}
+.details .lead{color:#6d4c42}
 
-.course-header{
-
-    background:white;
-
-    border-bottom:
-        4px solid
-        var(--orange);
-
-    padding:
-        20px;
-
-    text-align:center;
-
-    box-shadow:
-        0 5px 25px
-        rgba(0,0,0,.06);
+.detail-card{
+max-width:600px;margin:32px auto 0;padding:34px 22px;
+border:1px solid #c7ad70;outline:1px solid #c7ad7066;outline-offset:6px
 }
 
+.detail-icon{font-size:25px;color:#9b7a3d}
 
-/* LOGO TOP */
-
-.course-logo{
-
-    width:90px;
-    height:90px;
-
-    object-fit:contain;
-
-    margin-bottom:10px;
+.detail-card h3{
+font-family:'Amiri',serif;font-weight:400;font-size:29px;margin:8px 0
 }
 
-
-.course-header h2{
-
-    color:var(--blue-dark);
-
-    font-size:
-        clamp(
-            25px,
-            4vw,
-            40px
-        );
-
-    margin-bottom:8px;
+.btn{
+display:inline-block;text-decoration:none;background:#650d18;
+color:#fff4df;padding:13px 25px;margin-top:22px;
+border:1px solid #c7ad70;transition:.25s
 }
 
+.btn:hover{background:#8d1725;transform:translateY(-2px)}
 
-.course-header p{
-
-    color:var(--gray);
-
-    margin-bottom:8px;
+.closing{
+background:radial-gradient(ellipse at center,#7a1420,#3b080e 72%);
+padding-bottom:100px
 }
 
-
-.course-teacher{
-
-    color:var(--orange);
-
-    font-weight:bold;
-
-    font-size:16px;
+.monogram{
+font-family:'Amiri',serif;font-size:50px;color:var(--gold);margin:25px 0
 }
 
-
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-.progress-area{
-
-    max-width:1100px;
-
-    margin:
-        25px auto;
-
-    padding:
-        0 20px;
+footer{
+padding:18px;text-align:center;color:#8d9a8f;
+font-size:11px;background:#260409
 }
 
-
-.progress-info{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-bottom:8px;
-
-    color:var(--gray);
-
-    font-size:14px;
+.petal{
+position:fixed;top:-20px;z-index:3;pointer-events:none;
+color:#d9bb79;opacity:.65;animation:fall linear forwards
 }
 
-
-.progress{
-
-    height:9px;
-
-    background:#DCEBF0;
-
-    border-radius:20px;
-
-    overflow:hidden;
+@keyframes rotate{to{transform:rotate(360deg)}}
+@keyframes rise{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes fall{
+to{transform:translateY(110vh) rotate(560deg);opacity:0}
 }
 
-
-.progress-bar{
-
-    height:100%;
-
-    width:0%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            var(--orange),
-            var(--gold)
-        );
-
-    transition:.5s;
+@media(max-width:480px){
+.frame{padding:44px 14px}
+.time{min-width:72px;padding:14px 8px}
+.time strong{font-size:29px}
+section{padding:68px 18px}
 }
 
-
-/* =====================================================
-   LESSON GRID
-===================================================== */
-
-.lessons{
-
-    max-width:1100px;
-
-    margin:
-        30px auto;
-
-    padding:
-        0 20px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(250px,1fr)
-        );
-
-    gap:20px;
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{
+animation-duration:.01ms!important;
+scroll-behavior:auto!important
+}
 }
 
+/* الظرف المغربي الفاخر */
+body:not(.opened)>header,
+body:not(.opened)>section,
+body:not(.opened)>footer,
+body:not(.opened)>.music{visibility:hidden}
 
-/* =====================================================
-   LESSON CARD
-===================================================== */
-
-.lesson{
-
-    background:white;
-
-    border-radius:22px;
-
-    padding:20px;
-
-    border:
-        1px solid
-        #E2EEF3;
-
-    box-shadow:
-        0 8px 25px
-        rgba(20,70,90,.07);
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.3s;
+.envelope-screen{
+position:fixed;inset:0;z-index:100;display:grid;place-items:center;
+padding:22px;
+background:radial-gradient(ellipse at center,#8d1725 0%,#4a0710 70%,#220308 100%);
+transition:opacity .8s ease,visibility .8s ease
 }
 
-
-.lesson::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    right:0;
-
-    width:6px;
-
-    height:100%;
-
-    background:
-        linear-gradient(
-            var(--blue),
-            var(--orange)
-        );
+.envelope-screen:before{
+content:"";position:absolute;inset:14px;border:1px solid #e2bd67aa;
+pointer-events:none
 }
 
-
-.lesson:hover{
-
-    transform:
-        translateY(-6px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(20,70,90,.13);
+.envelope-screen:after{
+content:"✦　❋　✦";position:absolute;top:26px;left:50%;
+transform:translateX(-50%);color:#e2bd67;font-size:19px;letter-spacing:8px
 }
 
-
-/* NUMBER */
-
-.lesson-number{
-
-    display:inline-flex;
-
-    width:45px;
-    height:45px;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:13px;
-
-    background:
-        var(--blue-light);
-
-    color:
-        var(--blue);
-
-    font-weight:bold;
-
-    margin-bottom:13px;
+.envelope-screen.gone{
+opacity:0;visibility:hidden;pointer-events:none
 }
 
-
-.lesson h3{
-
-    color:var(--blue-dark);
-
-    font-size:18px;
-
-    margin-bottom:7px;
+.envelope{
+position:relative;width:min(88vw,430px);height:min(65vh,330px);
+min-height:270px;perspective:1200px;
+filter:drop-shadow(0 24px 32px #16020788)
 }
 
-
-.lesson-description{
-
-    font-size:13px;
-
-    color:var(--gray);
-
-    line-height:1.6;
-
-    margin-bottom:15px;
+.envelope-back{
+position:absolute;inset:0;
+background:linear-gradient(145deg,#a51d2c,#620b17 65%,#3b080e);
+border:2px solid #e2bd67;outline:1px solid #e2bd6744;
+outline-offset:6px;
+clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+border-radius:5px
 }
 
-
-/* =====================================================
-   LESSON BUTTONS
-===================================================== */
-
-.lesson-buttons{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:9px;
+.envelope-paper{
+position:absolute;left:7%;right:7%;top:8%;height:84%;
+background:#fff3dc;color:#5a0b15;border:1px solid #e2bd67;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+text-align:center;padding:20px;box-shadow:0 4px 15px #21030855
 }
 
-
-/* OPEN LESSON */
-
-.open-lesson{
-
-    width:100%;
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            #00A5C8
-        );
-
-    color:white;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
+.envelope-paper .small{
+font-family:'Amiri',serif;color:#9d792f;font-size:17px
 }
 
-
-.open-lesson:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 7px 18px
-        rgba(8,126,164,.25);
+.envelope-paper h2{
+font-family:'Amiri',serif;font-size:clamp(35px,9vw,54px);
+font-weight:400;line-height:1.1;margin:10px 0;color:#650d18
 }
 
+.envelope-paper p{font-size:12px;margin:8px 0;color:#77533b}
 
-/* ATTACHMENTS BUTTON */
-
-.attachments-btn{
-
-    width:100%;
-
-    padding:11px;
-
-    border:
-        1px solid
-        var(--orange);
-
-    border-radius:12px;
-
-    background:
-        var(--orange-light);
-
-    color:
-        #C45D0A;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
+.envelope-flap{
+position:absolute;z-index:4;inset:0 0 auto;height:58%;
+background:linear-gradient(160deg,#c22b3b,#720e1b);
+clip-path:polygon(0 0,100% 0,50% 100%);
+transform-origin:top center;transition:transform 1s ease;
+filter:drop-shadow(0 3px 3px #21030855)
 }
 
-
-.attachments-btn:hover{
-
-    background:
-        var(--orange);
-
-    color:white;
+.envelope-flap:after{
+content:"";position:absolute;inset:0;
+clip-path:polygon(0 0,100% 0,50% 100%);
+border-top:2px solid #f4d98c
 }
 
-
-/* =====================================================
-   ATTACHMENTS PANEL
-===================================================== */
-
-.lesson-files{
-
-    display:none;
-
-    margin-top:12px;
-
-    padding-top:12px;
-
-    border-top:
-        1px dashed
-        #D8E5EA;
+.gold-ribbon{
+position:absolute;z-index:5;left:0;right:0;top:47%;height:34px;
+background:linear-gradient(180deg,#f8e7a6,#c59a3b 42%,#f5d778 58%,#9b6e20);
+border-top:1px solid #fff0b6;border-bottom:1px solid #7b551b;
+display:grid;place-items:center;color:#5b0b14;
+font-family:'Amiri',serif;font-size:15px;letter-spacing:1px;
+box-shadow:0 3px 10px #21030855;transition:opacity .3s ease
 }
 
-
-.lesson-files a{
-
-    display:block;
-
-    text-decoration:none;
-
-    padding:10px;
-
-    margin-bottom:7px;
-
-    border-radius:9px;
-
-    background:
-        #F7FBFD;
-
-    color:
-        var(--blue);
-
-    font-size:13px;
-
-    transition:.2s;
+.gold-ribbon:before,.gold-ribbon:after{
+content:"";position:absolute;top:-5px;width:26px;height:42px;
+background:linear-gradient(90deg,#a87a25,#f3d77c,#b4862b);
+border:1px solid #f5df99
 }
 
+.gold-ribbon:before{left:20%}
+.gold-ribbon:after{right:20%}
 
-.lesson-files a:hover{
-
-    background:
-        var(--blue-light);
+.envelope-seal{
+position:absolute;z-index:6;left:50%;top:47%;
+transform:translate(-50%,-50%);width:61px;height:61px;
+border-radius:50%;display:grid;place-items:center;
+background:radial-gradient(circle at 35% 25%,#ffe9a0,#bd8c2c 65%,#81561b);
+border:2px solid #f7df98;color:#6a0d17;
+font-family:'Amiri',serif;font-size:23px;
+box-shadow:0 3px 12px #27050a99
 }
 
-
-/* =====================================================
-   VIEWER
-===================================================== */
-
-.viewer{
-
-    max-width:1100px;
-
-    margin:
-        35px auto;
-
-    padding:
-        0 20px;
-
-    display:none;
+.open-invite{
+position:absolute;z-index:8;inset:0;width:100%;height:100%;
+border:0;background:transparent;cursor:pointer;color:transparent
 }
 
+.envelope-screen.opening .envelope-flap{transform:rotateX(180deg)}
 
-.viewer-box{
+.envelope-screen.opening .gold-ribbon,
+.envelope-screen.opening .envelope-seal{opacity:0}
 
-    background:
-        var(--dark);
-
-    border-radius:25px;
-
-    padding:15px;
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.18);
+.envelope-screen.opening .envelope-paper{
+animation:paperRise 1.2s .2s ease both
 }
 
-
-.viewer-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:
-        12px 8px 18px;
-
-    color:white;
+.envelope-caption{
+position:absolute;bottom:8%;left:0;right:0;text-align:center;
+color:#f7e4b1;font-size:13px;letter-spacing:1px
 }
 
-
-.viewer-title{
-
-    font-size:20px;
-
-    font-weight:bold;
+@keyframes paperRise{
+from{transform:translateY(0)}
+to{transform:translateY(-18px)}
 }
 
-
-.close-btn{
-
-    background:
-        rgba(255,255,255,.1);
-
-    color:white;
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    border-radius:30px;
-
-    padding:
-        8px 15px;
-
-    cursor:pointer;
+.creator-credit{
+margin-top:12px;padding-top:12px;border-top:1px solid #d9bb7933;
+color:#c9ad78;font-size:11px;line-height:1.9;letter-spacing:.3px
 }
 
+.creator-credit strong{color:#e2bd67;font-weight:700}
 
-.video-container{
-
-    position:relative;
-
-    width:100%;
-
-    aspect-ratio:16/9;
-
-    background:#000;
-
-    border-radius:15px;
-
-    overflow:hidden;
+.creator-credit a{
+color:#e2bd67;text-decoration:none;direction:ltr;display:inline-block
 }
-
-
-.video-container iframe{
-
-    width:100%;
-    height:100%;
-
-    border:none;
-}
-
-
-/* =====================================================
-   BACK BUTTON
-===================================================== */
-
-.back-btn{
-
-    display:block;
-
-    margin:
-        10px auto 35px;
-
-    border:none;
-
-    background:
-        var(--blue-dark);
-
-    color:white;
-
-    padding:
-        12px 25px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:600px){
-
-    .hero{
-
-        min-height:100svh;
-    }
-
-    .logo{
-
-        width:105px;
-        height:105px;
-    }
-
-    .subtitle{
-
-        font-size:15px;
-    }
-
-    .start-btn{
-
-        width:90%;
-    }
-
-    .lessons{
-
-        grid-template-columns:1fr;
-    }
-
-    .viewer-header{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
+<div class="envelope-screen" id="envelopeScreen" aria-label="افتح دعوة الزفاف">
+  <div class="envelope">
+    <div class="envelope-back"></div>
 
-<!-- =====================================================
-     HOME
-===================================================== -->
-
-<section
-    class="hero"
-    id="homePage">
-
-    <div class="circle one"></div>
-    <div class="circle two"></div>
-
-
-    <div class="hero-content">
-
-
-        <!-- =================================================
-             شعار SMARTEDUCAM
-
-             استبدل هذا الجزء بصورة الشعار
-
-             مثال:
-
-             <img
-                src="logo.png"
-                class="logo"
-                alt="SMARTEDUCAM">
-
-        ================================================== -->
-
-        <div
-            class="logo"
-            style="
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#087EA4;
-            font-weight:bold;
-            ">
-
-            SMARTEDUCAM
-
-        </div>
-
-
-        <h1>
-
-            دورة الروبوتيك
-
-            <span>
-                للأطفال
-            </span>
-
-            2025/2026
-
-        </h1>
-
-
-        <div class="french-title">
-
-            Formation en Robotique
-            pour Enfants 2025/2026
-
-        </div>
-
-
-        <div class="teacher">
-
-            تأطير الأستاذ
-
-            <strong>
-                رضوان أوزيون
-            </strong>
-
-        </div>
-
-
-        <p class="subtitle">
-
-            رحلة ممتعة لاكتشاف عالم الروبوتات،
-            البرمجة، الإلكترونيات والابتكار
-            بطريقة تفاعلية وممتعة.
-
-        </p>
-
-
-        <button
-            class="start-btn"
-            onclick="openCourse()">
-
-            🚀 ابدأ رحلة الروبوتيك
-
-        </button>
-
+    <div class="envelope-paper">
+      <div class="small">بكل الحب والفرح</div>
+      <h2>خولة <span style="color:#b58a35">و</span> طارق</h2>
+      <p>دعوة زفاف خاصة بكم</p>
+      <div class="small">24 أكتوبر 2026</div>
     </div>
 
+    <div class="envelope-flap"></div>
+    <div class="gold-ribbon">دعوة زفاف</div>
+    <div class="envelope-seal">خ & ط</div>
+    <button class="open-invite" id="openInvite" aria-label="اضغط لفتح الدعوة">افتح الدعوة</button>
+  </div>
+
+  <div class="envelope-caption">اضغط على الظرف لفتح الدعوة والاستماع إلى الموسيقى</div>
+</div>
+
+<button class="music" id="musicBtn" type="button" aria-label="تشغيل أو إيقاف الموسيقى">
+  <span>♫</span> إيقاف الموسيقى
+</button>
+
+<audio id="weddingAudio" preload="auto" loop playsinline src="music.mp3"></audio>
+
+<header class="hero">
+  <div class="frame">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <p class="kicker">بكل الحب والفرح</p>
+    <p style="margin:0 0 8px;color:var(--muted)">دعوة لحضور حفل زفاف</p>
+
+    <h1>خولة</h1>
+    <span class="amp">و</span>
+    <h1>طارق</h1>
+
+    <p class="invite">
+      بكل المودة والسرور، نتشرّف بدعوتكم لمشاركتنا فرحة العمر،
+      والاحتفال معنا ببداية حكاية جديدة عنوانها المحبة والوفاء.
+    </p>
+
+    <div class="date">24 · 10 · 2026</div>
+
+    <p style="font-size:11px;color:#e2bd67;margin:18px 0 0">
+      موسيقى العرس · يمكن إيقافها من الزر أعلى الصفحة
+    </p>
+
+    <a class="down" href="#count">تفاصيل الدعوة <span>⌄</span></a>
+  </div>
+</header>
+
+<section id="count">
+  <div class="section-kicker">اللحظة المنتظرة</div>
+  <h2>نعدّ الأيام للقائكم</h2>
+  <p class="lead">كل يوم يقربنا من ليلة نرجو أن تظل ذكرى جميلة في قلوبنا جميعًا.</p>
+
+  <div class="countdown" aria-label="العد التنازلي">
+    <div class="time"><strong id="days">--</strong><small>يوم</small></div>
+    <div class="time"><strong id="hours">--</strong><small>ساعة</small></div>
+    <div class="time"><strong id="minutes">--</strong><small>دقيقة</small></div>
+    <div class="time"><strong id="seconds">--</strong><small>ثانية</small></div>
+  </div>
+
+  <div class="date">السبت · 24 أكتوبر 2026</div>
 </section>
 
-
-
-<!-- =====================================================
-     COURSE PAGE
-===================================================== -->
-
-<section id="coursePage">
-
-
-    <header class="course-header">
-
-
-        <!-- =================================================
-             شعار المنصة أعلى صفحة الدروس
-
-             استبدله بالصورة:
-
-             <img src="logo.png"
-                  class="course-logo"
-                  alt="SMARTEDUCAM">
-
-        ================================================== -->
-
-        <div
-            class="course-logo"
-            style="
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin:auto;
-            color:#087EA4;
-            font-weight:bold;
-            ">
-
-            SMARTEDUCAM
-
-        </div>
-
-
-        <h2>
-
-            🤖 دورة الروبوتيك للأطفال
-
-        </h2>
-
-
-        <p>
-
-            2025/2026 —
-            تعلم، اكتشف، اصنع وابتكر
-
-        </p>
-
-
-        <div class="course-teacher">
-
-            تأطير الأستاذ رضوان أوزيون
-
-        </div>
-
-    </header>
-
-
-
-    <!-- PROGRESS -->
-
-    <div class="progress-area">
-
-        <div class="progress-info">
-
-            <span>
-                تقدمك في الدورة
-            </span>
-
-            <span id="progressText">
-                0 / 20
-            </span>
-
-        </div>
-
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="progressBar">
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- VIEWER -->
-
-    <div
-        class="viewer"
-        id="viewer">
-
-        <div class="viewer-box">
-
-
-            <div class="viewer-header">
-
-                <div
-                    class="viewer-title"
-                    id="viewerTitle">
-
-                    عنوان الدرس
-
-                </div>
-
-
-                <button
-                    class="close-btn"
-                    onclick="closeLesson()">
-
-                    ✕ إغلاق الدرس
-
-                </button>
-
-            </div>
-
-
-            <div class="video-container">
-
-                <iframe
-                    id="lessonFrame"
-                    src=""
-                    allow="autoplay; fullscreen"
-                    allowfullscreen>
-                </iframe>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- LESSONS -->
-
-    <div
-        class="lessons"
-        id="lessonsContainer">
-    </div>
-
-
-
-    <button
-        class="back-btn"
-        onclick="goHome()">
-
-        ← العودة إلى الصفحة الرئيسية
-
-    </button>
-
-
+<section class="details" id="details">
+  <div class="section-kicker">يسعدنا حضوركم</div>
+  <h2>مكان اللقاء</h2>
+  <p class="lead">
+    حضوركم يكمّل فرحتنا ويمنح يومنا معنى أجمل.
+    يسعدنا أن تشاركونا هذه اللحظات المميزة.
+  </p>
+
+  <div class="detail-card">
+    <div class="detail-icon">⌖</div>
+    <h3>قاعة مربح</h3>
+    <p>مركز تارودانت، قرب المحطة الطرقية.</p>
+    <p>اضغطوا على الزر أدناه لفتح الموقع على خرائط Google والحصول على الاتجاهات.</p>
+
+    <a class="btn"
+       href="https://maps.app.goo.gl/H3QokLPu1FZKJwcL8?g_st=aw"
+       target="_blank"
+       rel="noopener">
+       عرض الموقع والاتجاهات ↗
+    </a>
+  </div>
 </section>
 
+<section class="closing">
+  <div class="section-kicker">بوجودكم تكتمل فرحتنا</div>
+  <div class="monogram">خ & ط</div>
+  <h2>شكرًا لأنكم جزء من حكايتنا</h2>
+  <p class="lead">
+    نترقّب لقاءكم بقلوب مغمورة بالمحبة، ونسأل الله أن يجعل أيامكم أفراحًا ومسرّات.
+  </p>
+  <p style="color:var(--gold);font-family:'Amiri',serif;font-size:25px;margin-top:28px">
+    خولة وطارق
+  </p>
+</section>
 
+<footer>
+  صُنعت بمحبة ليومنا المميّز · 24 أكتوبر 2026
+  <div class="creator-credit">
+    Created by <strong>ABDOLLAH OUCHIKH</strong> ·
+    <a href="tel:0706600479">0706600479</a>
+  </div>
+</footer>
 
 <script>
-
-/* =====================================================
-   إعداد الدروس
-=====================================================
-
-   لكل درس:
-
-   title = عنوان الدرس
-
-   url = رابط تسجيل الدرس
-
-   files = مرفقات الدرس
-
-===================================================== */
-
-
-const lessons = [
-
-{
-    title:"عنوان الدرس الأول",
-
-    url:"ضع رابط الدرس الأول هنا",
-
-    files:[
-        {
-            name:"📄 ملف الدرس",
-            url:"ضع رابط المرفق هنا"
-        },
-        {
-            name:"📝 التمرين",
-            url:"ضع رابط التمرين هنا"
-        }
-    ]
-},
-
-
-{
-    title:"عنوان الدرس الثاني",
-
-    url:"ضع رابط الدرس الثاني هنا",
-
-    files:[
-        {
-            name:"📄 ملف الدرس",
-            url:"ضع رابط المرفق هنا"
-        }
-    ]
-},
-
-
-{
-    title:"عنوان الدرس الثالث",
-
-    url:"ضع رابط الدرس الثالث هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الرابع",
-
-    url:"ضع رابط الدرس الرابع هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الخامس",
-
-    url:"ضع رابط الدرس الخامس هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس السادس",
-
-    url:"ضع رابط الدرس السادس هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس السابع",
-
-    url:"ضع رابط الدرس السابع هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الثامن",
-
-    url:"ضع رابط الدرس الثامن هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس التاسع",
-
-    url:"ضع رابط الدرس التاسع هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس العاشر",
-
-    url:"ضع رابط الدرس العاشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الحادي عشر",
-
-    url:"ضع رابط الدرس الحادي عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الثاني عشر",
-
-    url:"ضع رابط الدرس الثاني عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الثالث عشر",
-
-    url:"ضع رابط الدرس الثالث عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الرابع عشر",
-
-    url:"ضع رابط الدرس الرابع عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الخامس عشر",
-
-    url:"ضع رابط الدرس الخامس عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس السادس عشر",
-
-    url:"ضع رابط الدرس السادس عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس السابع عشر",
-
-    url:"ضع رابط الدرس السابع عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس الثامن عشر",
-
-    url:"ضع رابط الدرس الثامن عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس التاسع عشر",
-
-    url:"ضع رابط الدرس التاسع عشر هنا",
-
-    files:[]
-},
-
-
-{
-    title:"عنوان الدرس العشرون",
-
-    url:"ضع رابط الدرس العشرون هنا",
-
-    files:[]
+// العد التنازلي إلى يوم الزفاف
+const target = new Date('2026-10-24T00:00:00');
+
+function tick(){
+  let diff = Math.max(0, target - Date.now());
+
+  const vals = {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor(diff % 86400000 / 3600000),
+    minutes: Math.floor(diff % 3600000 / 60000),
+    seconds: Math.floor(diff % 60000 / 1000)
+  };
+
+  for(const [id,val] of Object.entries(vals)){
+    document.getElementById(id).textContent = String(val).padStart(2,'0');
+  }
 }
 
-];
-
-
-
-/* =====================================================
-   CREATE LESSON CARDS
-===================================================== */
-
-const lessonsContainer =
-    document.getElementById(
-        "lessonsContainer"
-    );
-
-
-lessons.forEach(
-    (lesson,index)=>{
-
-        const card =
-            document.createElement("div");
-
-        card.className="lesson";
-
-
-        let filesHTML="";
-
-
-        if(
-            lesson.files &&
-            lesson.files.length > 0
-        ){
-
-            lesson.files.forEach(
-                file=>{
-
-                    filesHTML += `
-
-                    <a
-                        href="${file.url}"
-                        target="_blank">
-
-                        ${file.name}
-
-                    </a>
-
-                    `;
-
-                }
-            );
-
-        }else{
-
-            filesHTML = `
-
-                <div
-                    style="
-                    color:#8AA0AA;
-                    font-size:13px;
-                    padding:8px;">
-
-                    لا توجد مرفقات لهذا الدرس حاليًا.
-
-                </div>
-
-            `;
-
-        }
-
-
-
-        card.innerHTML=`
-
-            <div class="lesson-number">
-
-                ${String(index+1).padStart(2,"0")}
-
-            </div>
-
-
-            <h3>
-
-                ${lesson.title}
-
-            </h3>
-
-
-            <div class="lesson-description">
-
-                درس من دورة الروبوتيك للأطفال
-
-            </div>
-
-
-            <div class="lesson-buttons">
-
-
-                <button
-                    class="open-lesson"
-                    onclick="openLesson(${index})">
-
-                    ▶ افتح الدرس
-
-                </button>
-
-
-                <button
-                    class="attachments-btn"
-                    onclick="toggleFiles(${index})">
-
-                    📚 المرفقات والملحقات
-
-                </button>
-
-
-            </div>
-
-
-            <div
-                class="lesson-files"
-                id="files-${index}">
-
-                ${filesHTML}
-
-            </div>
-
-        `;
-
-
-        lessonsContainer.appendChild(card);
-
-    }
-);
-
-
-
-/* =====================================================
-   OPEN COURSE
-===================================================== */
-
-function openCourse(){
-
-    document.getElementById(
-        "homePage"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "coursePage"
-    ).style.display="block";
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
+tick();
+setInterval(tick,1000);
+
+const btn = document.getElementById('musicBtn');
+const weddingAudio = document.getElementById('weddingAudio');
+const envelopeScreen = document.getElementById('envelopeScreen');
+let playing = false;
+
+async function startMusic(){
+  try{
+    weddingAudio.volume = 0.72;
+    await weddingAudio.play();
+    playing = true;
+    btn.innerHTML = '<span>Ⅱ</span> إيقاف الموسيقى';
+  }catch(e){
+    playing = false;
+    btn.innerHTML = '<span>♫</span> اضغط لتشغيل الموسيقى';
+  }
 }
 
-
-
-/* =====================================================
-   OPEN LESSON
-===================================================== */
-
-function openLesson(index){
-
-    const lesson =
-        lessons[index];
-
-
-    const viewer =
-        document.getElementById(
-            "viewer"
-        );
-
-
-    viewer.style.display="block";
-
-
-    document.getElementById(
-        "viewerTitle"
-    ).textContent =
-
-        "الدرس "
-        +
-        (index+1)
-        +
-        " — "
-        +
-        lesson.title;
-
-
-
-    let url =
-        lesson.url;
-
-
-    /*
-       Google Drive
-
-       تحويل رابط view
-       إلى preview
-    */
-
-    if(
-        url.includes(
-            "drive.google.com"
-        )
-    ){
-
-        url =
-            url.replace(
-                "/view?usp=sharing",
-                "/preview"
-            );
-
-
-        url =
-            url.replace(
-                "/view",
-                "/preview"
-            );
-
-    }
-
-
-
-    document.getElementById(
-        "lessonFrame"
-    ).src=url;
-
-
-
-    viewer.scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"start"
-
-    });
-
-
-
-    updateProgress(index);
-
+function stopMusic(){
+  weddingAudio.pause();
+  playing = false;
+  btn.innerHTML = '<span>♫</span> تشغيل الموسيقى';
 }
 
+btn.addEventListener('click',()=>{
+  if(playing) stopMusic();
+  else startMusic();
+});
 
+document.getElementById('openInvite').addEventListener('click',async()=>{
+  envelopeScreen.classList.add('opening');
 
-/* =====================================================
-   ATTACHMENTS
-===================================================== */
+  // يبدأ تشغيل الموسيقى عند الضغط على الظرف.
+  await startMusic();
 
-function toggleFiles(index){
+  document.body.classList.add('opened');
 
-    const files =
-        document.getElementById(
-            "files-"+index
-        );
+  setTimeout(()=>envelopeScreen.classList.add('gone'),850);
+  setTimeout(()=>envelopeScreen.remove(),1800);
+});
 
+// قد تمنع بعض المتصفحات التشغيل التلقائي حتى يتفاعل الزائر مع الصفحة.
+window.addEventListener('load',()=>{
+  startMusic();
+});
 
-    if(
-        files.style.display==="block"
-    ){
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        files.style.display="none";
+if(!reduced){
+  setInterval(()=>{
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.textContent = ['✦','✧','❋'][Math.floor(Math.random()*3)];
+    p.style.left = Math.random()*100+'vw';
+    p.style.fontSize = (10+Math.random()*13)+'px';
+    p.style.animationDuration = (7+Math.random()*7)+'s';
 
-    }else{
-
-        files.style.display="block";
-
-    }
-
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),15000);
+  },850);
 }
-
-
-
-/* =====================================================
-   CLOSE LESSON
-===================================================== */
-
-function closeLesson(){
-
-    document.getElementById(
-        "viewer"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "lessonFrame"
-    ).src="";
-
-}
-
-
-
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-function updateProgress(index){
-
-    const completed =
-        index+1;
-
-
-    const percentage =
-        (completed / lessons.length) * 100;
-
-
-    document.getElementById(
-        "progressBar"
-    ).style.width =
-        percentage+"%";
-
-
-    document.getElementById(
-        "progressText"
-    ).textContent =
-
-        completed
-        +
-        " / "
-        +
-        lessons.length;
-
-}
-
-
-
-/* =====================================================
-   HOME
-===================================================== */
-
-function goHome(){
-
-    document.getElementById(
-        "coursePage"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "homePage"
-    ).style.display="flex";
-
-
-    closeLesson();
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-}
-
 </script>
 
 </body>
 </html>
-```
